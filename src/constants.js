@@ -1,1 +1,1 @@
-export const BASE_API_ENDPOINT='http://footopft.shop/api/'
+export const BASE_API_ENDPOINT='https://footopft.shop/api/'
