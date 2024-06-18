@@ -2,27 +2,32 @@ import Header from '../../Components/user/Header'
 import Footer from '../../Components/user/Footer'
 import ProductCard from '../../Components/user/ProductCard'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { BASE_API_ENDPOINT } from '../../constants'
+import { useLocation } from 'react-router-dom'
 
-const MenuPage = () => {
+const CategoryPage = () => {
+  const location=useLocation()
+
   const [allproducts,setAllproducts]=useState([])
-  const getAllProducts=async()=>{
-     try {
-       const response=await axios(`${BASE_API_ENDPOINT}products/getallproducts`)
-       setAllproducts(response.data.allproducts)
-     } catch (error) {
-       console.log(error)
-     }
-  }
+  const getAllProducts=useCallback(async()=>{
+    try {
+      const response=await axios(`${BASE_API_ENDPOINT}products/getallproducts?category=${location.state.category}`)
+      setAllproducts(response.data.allproducts)
+    } catch (error) {
+      console.log(error)
+    }
+ },[location.state.category]) 
   
 
   useEffect(()=>{
      getAllProducts()
-  },[])
+  },[getAllProducts])
+
   return (
     <div className="w-auto h-screen flex flex-col items-center space-y-7 justify-between" >
-         <Header pagename='Menu'/>
+         <Header />
+         <h1 className='text-2xl font-bold'>{location.state.category}</h1>
            <div className="w-[95%] h-full  p-3 flex flex-wrap overflow-y-scroll" >
            {
                     allproducts.map((product)=>{
@@ -38,10 +43,11 @@ const MenuPage = () => {
              />
           })
         }  
+
            </div>
          <Footer/>
          </div>
   )
 }
 
-export default MenuPage
+export default CategoryPage

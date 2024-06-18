@@ -1,8 +1,12 @@
 import CategoryCard from "../../Components/user/CategoryCard"
 import Footer from "../../Components/user/Footer"
 import Header from "../../Components/user/Header"
+import { useNavigate } from "react-router-dom"
 
 const HomePage = () => {
+
+  const navigate=useNavigate()
+  
   return (
     <div className="w-auto h-auto flex flex-col items-center space-y-7 " >
          <Header pagename='Home'/>
@@ -14,7 +18,7 @@ const HomePage = () => {
              </h1>
               <p className="font-semibold text-xl text-amber-200">Sip, Savor, Smile</p>
               <p className=" text-lg text-center text-white">At Coffee Time, we believe in the simple joys of life – great coffee, delicious food, and a welcoming atmosphere. Step into our café and experience a world of flavors and warmth.</p>
-              <button className="h-8 w-64 border rounded-2xl border-amber-200 text-amber-200 hover:bg-amber-200 hover:text-teal-900">View Menu</button>
+              <button onClick={()=>navigate('/menu')} className="h-8 w-64 border rounded-2xl border-amber-200 text-amber-200 hover:bg-amber-200 hover:text-teal-900">View Menu</button>
            </div>
            <div className="w-1/2 h-full rounded-e-xl bg-greenbackground bg-cover ">
 
