@@ -1,1 +1,1 @@
-export const BASE_API_ENDPOINT='http://localhost:3333/api/'
+export const BASE_API_ENDPOINT='http://65.0.159.73/api/'
