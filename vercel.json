@@ -1,8 +1,9 @@
 {
     "rewrites": [
       {
-        "source": "/admin",
-        "destination": "https://coffee-time-frontend.vercel.app/admin"
+        "source": "/(.*)",
+        "destination": "/index.html"
       }
     ]
   }
+  
